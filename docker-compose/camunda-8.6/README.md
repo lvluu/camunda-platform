@@ -163,7 +163,6 @@ Web Modeler can be run standalone with only Identity, Keycloak and Postgres as d
 Issue the following commands to only start Web Modeler and its dependencies:
 
 ```
-docker compose --profile modeling up -d
 ```
 
 To tear down the whole environment run the following command
