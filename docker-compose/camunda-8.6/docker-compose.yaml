@@ -241,14 +241,14 @@ services:
       IDENTITY_DATABASE_USERNAME: bn_keycloak
       IDENTITY_DATABASE_PASSWORD: "#3]O?4RGj)DE7Z!9SA5"
       KEYCLOAK_INIT_OPERATE_SECRET: XALaRPl5qwTEItdwCMiPS62nVpKs7dL7
-      KEYCLOAK_INIT_OPERATE_ROOT_URL: http://${HOST}:8081
+      KEYCLOAK_INIT_OPERATE_ROOT_URL: https://${HOST}:8081
       KEYCLOAK_INIT_TASKLIST_SECRET: XALaRPl5qwTEItdwCMiPS62nVpKs7dL7
-      KEYCLOAK_INIT_TASKLIST_ROOT_URL: http://${HOST}:8082
+      KEYCLOAK_INIT_TASKLIST_ROOT_URL: https://${HOST}:8082
       KEYCLOAK_INIT_OPTIMIZE_SECRET: XALaRPl5qwTEItdwCMiPS62nVpKs7dL7
-      KEYCLOAK_INIT_OPTIMIZE_ROOT_URL: http://${HOST}:8083
-      KEYCLOAK_INIT_WEBMODELER_ROOT_URL: http://${HOST}:8070
+      KEYCLOAK_INIT_OPTIMIZE_ROOT_URL: https://${HOST}:8083
+      KEYCLOAK_INIT_WEBMODELER_ROOT_URL: https://${HOST}:8070
       KEYCLOAK_INIT_CONNECTORS_SECRET: XALaRPl5qwTEItdwCMiPS62nVpKs7dL7
-      KEYCLOAK_INIT_CONNECTORS_ROOT_URL: http://${HOST}:8085
+      KEYCLOAK_INIT_CONNECTORS_ROOT_URL: http:s//${HOST}:8085
       KEYCLOAK_INIT_ZEEBE_NAME: zeebe
       KEYCLOAK_USERS_0_USERNAME: "demo"
       KEYCLOAK_USERS_0_PASSWORD: "demo"
@@ -323,7 +323,7 @@ services:
     volumes:
       - keycloak-theme:/opt/bitnami/keycloak/themes/identity
     ports:
-      - "18080:8080"
+      - "18880:8080"
     environment:
       KEYCLOAK_HTTP_RELATIVE_PATH: /auth
       KEYCLOAK_DATABASE_HOST: postgres
@@ -443,9 +443,9 @@ services:
       RESTAPI_PUSHER_APP_ID: web-modeler-app
       RESTAPI_PUSHER_KEY: web-modeler-app-key
       RESTAPI_PUSHER_SECRET: web-modeler-app-secret
-      RESTAPI_OAUTH2_TOKEN_ISSUER: http://${HOST}:18080/auth/realms/camunda-platform
+      RESTAPI_OAUTH2_TOKEN_ISSUER: https://${HOST}:18080/auth/realms/camunda-platform
       RESTAPI_OAUTH2_TOKEN_ISSUER_BACKEND_URL: http://keycloak:8080/auth/realms/camunda-platform
-      RESTAPI_SERVER_URL: http://${HOST}:8070
+      RESTAPI_SERVER_URL: https://${HOST}:8070
       RESTAPI_MAIL_HOST: mailpit
       RESTAPI_MAIL_PORT: 1025
       RESTAPI_MAIL_ENABLE_TLS: "false"
@@ -461,7 +461,7 @@ services:
     container_name: web-modeler-webapp
     image: camunda/web-modeler-webapp:${CAMUNDA_WEB_MODELER_VERSION}
     ports:
-      - "8070:8070"
+      - "18070:8070"
     depends_on:
       web-modeler-restapi:
         condition: service_healthy
@@ -474,7 +474,7 @@ services:
       RESTAPI_HOST: web-modeler-restapi
       SERVER_HOST: web-modeler-webapp
       SERVER_HTTPS_ONLY: "false"
-      SERVER_URL: http://${HOST}:8070
+      SERVER_URL: https://${HOST}:8070
       PUSHER_APP_ID: web-modeler-app
       PUSHER_KEY: web-modeler-app-key
       PUSHER_SECRET: web-modeler-app-secret
@@ -487,7 +487,7 @@ services:
       OAUTH2_CLIENT_ID: web-modeler
       OAUTH2_JWKS_URL: http://keycloak:8080/auth/realms/camunda-platform/protocol/openid-connect/certs
       OAUTH2_TOKEN_AUDIENCE: web-modeler
-      OAUTH2_TOKEN_ISSUER: http://${HOST}:18080/auth/realms/camunda-platform
+      OAUTH2_TOKEN_ISSUER: https://${HOST}:18080/auth/realms/camunda-platform
       IDENTITY_BASE_URL: http://identity:8084/
       PLAY_ENABLED: "true"
     networks:
