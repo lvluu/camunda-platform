@@ -252,3 +252,40 @@ Looking for information on Camunda Platform 7? Check out the links below:
 
 - [Documentation](https://docs.camunda.org/)
 - [GitHub](https://github.com/camunda/camunda-bpm-platform)
+
+
+
+operate
+18081
+tasklist
+18082
+
+optimize:
+18083
+zebee 
+18088
+
+
+# operate
+https://camunda.amwork.app:8081 {
+        reverse_proxy http://localhost:18081
+}
+
+# tasklist
+https://camunda.amwork.app:8082 {
+        reverse_proxy http://localhost:18082
+}
+
+# optimize
+https://camunda.amwork.app:8083 {
+        reverse_proxy http://localhost:18083
+}
+
+# zeebee
+https://camunda.amwork.app:18080 {
+        reverse_proxy http://localhost:18880
+}
+https://camunda.amwork.app:9600 {
+        reverse_proxy http://localhost:19600
+}
+
