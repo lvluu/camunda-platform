@@ -82,7 +82,7 @@ services:
       - ZEEBE_CLIENT_CONFIG_PATH=/tmp/zeebe_auth_cache
     healthcheck:
       # checked
-      test: [ "CMD-SHELL", "wget -O - -q 'http://localhost:9600/actuator/health/readiness'" ]
+      test: [ "CMD-SHELL", "wget -O - -q 'http://localhost:8080/actuator/health/readiness'" ]
       interval: 30s
       timeout: 1s
       retries: 5
@@ -99,7 +99,7 @@ services:
   tasklist: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#tasklist
     profiles:
       - full
-    image: camunda/tasklist:${CAMUNDA_PLATFORM_VERSION}
+    image: camunda/tasklist:8.6.0-alpha2
     container_name: tasklist
     ports:
       - "18082:8080"
